@@ -2,31 +2,25 @@ package main
 
 import "fmt"
 
-//main
-//number 1
-//number 2
-//oops
-//FuckYouaa
-//HoBA
-//number 1
-//number 2
-//oops
-//stop
-
 func main() {
-	fmt.Println("MAIN")
-
-	hello()
-
-	println("EgegeY")
-
-	hi()
-
-	hello()
-
-	println("STOP!")
+	
 }
 
+//изменение указателей
+func changePtr(in *int, str *string, bl *bool, fl *float64){
+	if in != nil && str != nil && bl != nil && fl != nil{
+	*in = -3
+	*str = "world"
+	*bl = false
+	*fl = -23.1
+	fmt.Println("указатели не нулевые")
+	}else{
+		fmt.Println("NIL!")
+	}
+	
+}
+
+//defer method (stack)
 func hello() {
 	defer func() {
 		fmt.Println("Hello number 2")
@@ -46,4 +40,19 @@ func hi() {
 	defer func() {
 		println("HoBA")
 	}()
+}
+
+/*часы 12ти часовой формат
+d - часовая и минутная стрелки
+0 < d < 360
+h - часы
+m - минуты
+It is h hours m minutes.
+*/
+func dial(){
+	var d uint16
+	fmt.Scan(&d)
+	h := d / 30
+	m := (d % 30) * 2
+	fmt.Println("It is", h, "hours", m, "minutes.")
 }
