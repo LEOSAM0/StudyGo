@@ -1,21 +1,26 @@
 package main
 
-import "fmt"
+import (
+	automobile "StudyGo/Automobile"
+	greeting "StudyGo/Greeting"
+	"fmt"
 
-/*
-дано трёхзначное число
-вывести YES - все цифры отличаются друг от друга
-иначе NO
-*/
+	"github.com/k0kubun/pp"
+)
+
+type User struct {
+	name string
+	age  int
+}
 
 func main() {
-	var str string
-	fmt.Scan(&str)
-	if str[0] == str[1] || str[0] == str[2] || str[1] == str[2] {
-		fmt.Println("NO")
-	} else {
-		fmt.Println("YES")
-	}
+	greeting.Hi()
+
+	Anton := User{"Anton", 32}
+	pp.Println(Anton)
+
+	Audi := automobile.NewAutomobile("Audi", true, 3.21, 234.7, 8)
+	pp.Println(Audi)
 }
 
 func changePtr(in *int, str *string, bl *bool, fl *float64) {
@@ -31,7 +36,7 @@ func changePtr(in *int, str *string, bl *bool, fl *float64) {
 
 }
 
-//defer method (stack)
+// defer method (stack)
 func hello() {
 	defer func() {
 		fmt.Println("Hello number 2")
@@ -53,7 +58,8 @@ func hi() {
 	}()
 }
 
-/*часы 12ти часовой формат
+/*
+часы 12ти часовой формат
 d - часовая и минутная стрелки
 0 < d < 360
 h - часы
