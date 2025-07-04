@@ -1,66 +1,51 @@
 package main
 
 import (
+	dogs "StudyGo/Dogs"
 	"fmt"
 
 	"github.com/k0kubun/pp"
 )
 
 /*
-Допустим мы с вами описываем конкурс красоты собак
-Пускай есть структура собаки, с полями
-Строковое имя собаки
-Целочисленная судейская оценка
-Булевское значение, обозначающее была ли собака вежлива с судьями
-Нужно создать несколько собак
-Если собака была вежлива с судьями, то добавить собаке один балл судейской оценки
-Подобрать наиболее подходящую структуру данных и вывести собак до применения бонусной оценки и после
+Допустим мы с вами описываем автомобильную парковку
+На парковке есть несколько мест, каждое обозначено каким-то строковым значением (A4, B8, D32 и так далее)
+Каджое парковочное место имеет какую-то свою определённую стоимость за час парковки
+Нужно создать все парковочные места с их стоимостью, и вывести на экран только парковочные места стоимостью меньше 500 рублей
+Кажому месту стоимостью больше 900 рублей нужно сделать скидку 10% (было 1100 рублей стало 990)
+Необходимо выбрать наиболее подходящую для решения задачи структуры данных и реализовать описанные пункты
 */
-
-type Dog struct {
-	name       string
-	judgeGrade int
-	isPolitely bool
-}
-
-func (D *Dog) ifPolitely() int {
-	if D.isPolitely {
-		D.judgeGrade += 1
-		return D.judgeGrade
-	}
-	return D.judgeGrade
-}
 
 func main() {
 
-	Funtik := Dog{
-		name:       "Funtik",
-		judgeGrade: 6,
-		isPolitely: true,
+	Funtik := dogs.Dog{
+		Name:       "Funtik",
+		JudgeGrade: 6,
+		IsPolitely: true,
 	}
 	pp.Println(Funtik)
 
-	David := Dog{
-		name:       "David",
-		judgeGrade: 5,
-		isPolitely: false,
+	David := dogs.Dog{
+		Name:       "David",
+		JudgeGrade: 5,
+		IsPolitely: false,
 	}
 	pp.Println(David)
 
-	Hrrr := Dog{
-		name:       "Hrrr",
-		judgeGrade: 2,
-		isPolitely: true,
+	Hrrr := dogs.Dog{
+		Name:       "Hrrr",
+		JudgeGrade: 2,
+		IsPolitely: true,
 	}
 	pp.Println(Hrrr)
 
-	dogs := []Dog{Funtik, David, Hrrr}
+	dogs := []dogs.Dog{Funtik, David, Hrrr}
 
 	fmt.Println("До применения бонуса:")
 	pp.Println(dogs)
 
 	for i := range dogs {
-		dogs[i].ifPolitely()
+		dogs[i].IfPolitely()
 	}
 
 	fmt.Println("После применения бонуса:")
