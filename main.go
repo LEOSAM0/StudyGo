@@ -32,6 +32,7 @@ func (D *Dog) ifPolitely() int {
 }
 
 func main() {
+
 	Funtik := Dog{
 		name:       "Funtik",
 		judgeGrade: 6,
@@ -42,31 +43,28 @@ func main() {
 	David := Dog{
 		name:       "David",
 		judgeGrade: 5,
-		isPolitely: true,
+		isPolitely: false,
 	}
 	pp.Println(David)
 
 	Hrrr := Dog{
 		name:       "Hrrr",
 		judgeGrade: 2,
-		isPolitely: false,
+		isPolitely: true,
 	}
 	pp.Println(Hrrr)
 
-	dogs := map[bool]int{
-		Funtik.isPolitely: Funtik.ifPolitely(),
-		David.isPolitely:  David.ifPolitely(),
-		Hrrr.isPolitely:   Hrrr.ifPolitely(),
-	}
+	dogs := []Dog{Funtik, David, Hrrr}
 
+	fmt.Println("До применения бонуса:")
 	pp.Println(dogs)
-	pp.Println(len(dogs))
 
-	i, ok := dogs[Funtik.isPolitely]
-	if ok {
-		pp.Println(i)
+	for i := range dogs {
+		dogs[i].ifPolitely()
 	}
 
+	fmt.Println("После применения бонуса:")
+	pp.Println(dogs)
 }
 
 func changePtr(in *int, str *string, bl *bool, fl *float64) {
