@@ -16,18 +16,18 @@ func NewAutomobile(Name string, IsStarted bool, Acceleration float64, Speed floa
 		return automobile{}
 	}
 
-	fmt.Println("Started")
+	/*fmt.Println("Started")
 	if !IsStarted {
 		return automobile{}
-	}
+	}*/
 
 	fmt.Println("Acceleration")
-	if Acceleration <= 0 {
+	if !IsStarted || Acceleration <= 0 {
 		return automobile{}
 	}
 
 	fmt.Println("Speed")
-	if Speed < 0 || Speed > 250 {
+	if !IsStarted || Speed < 0 || Speed > 250 {
 		return automobile{}
 	}
 

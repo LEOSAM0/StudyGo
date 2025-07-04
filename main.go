@@ -8,19 +8,53 @@ import (
 	"github.com/k0kubun/pp"
 )
 
-type User struct {
-	name string
-	age  int
+/*
+Допустим мы с вами описываем конкурс красоты собак
+Пускай есть структура собаки, с полями
+Строковое имя собаки
+Целочисленная судейская оценка
+Булевское значение, обозначающее была ли собака вежлива с судьями
+Нужно создать несколько собак
+Если собака была вежлива с судьями, то добавить собаке один балл судейской оценки
+Подобрать наиболее подходящую структуру данных и вывести собак до применения бонусной оценки и после
+*/
+
+type Dog struct {
+	name       string
+	judgeGrade int
+	isPolitely bool
+}
+
+func (D *Dog) ifPolitely() {
+	if D.isPolitely {
+		D.judgeGrade += 1
+	}
 }
 
 func main() {
 	greeting.Hi()
 
-	Anton := User{"Anton", 32}
-	pp.Println(Anton)
-
 	Audi := automobile.NewAutomobile("Audi", true, 3.21, 234.7, 8)
 	pp.Println(Audi)
+
+	mapa1 := map[string]int{
+		"A": 54,
+		"B": 3,
+		"C": 81,
+	}
+	pp.Println(mapa1)
+
+	mapa1["D"] = 21
+	v, ok := mapa1["A"]
+	if ok {
+		pp.Println(v)
+	} else {
+		pp.Println("Not found")
+	}
+
+	delete(mapa1, "B")
+	pp.Println(mapa1)
+
 }
 
 func changePtr(in *int, str *string, bl *bool, fl *float64) {
