@@ -1,8 +1,6 @@
 package main
 
 import (
-	automobile "StudyGo/Automobile"
-	greeting "StudyGo/Greeting"
 	"fmt"
 
 	"github.com/k0kubun/pp"
@@ -25,35 +23,49 @@ type Dog struct {
 	isPolitely bool
 }
 
-func (D *Dog) ifPolitely() {
+func (D *Dog) ifPolitely() int {
 	if D.isPolitely {
 		D.judgeGrade += 1
+		return D.judgeGrade
 	}
+	return D.judgeGrade
 }
 
 func main() {
-	greeting.Hi()
-
-	Audi := automobile.NewAutomobile("Audi", true, 3.21, 234.7, 8)
-	pp.Println(Audi)
-
-	mapa1 := map[string]int{
-		"A": 54,
-		"B": 3,
-		"C": 81,
+	Funtik := Dog{
+		name:       "Funtik",
+		judgeGrade: 6,
+		isPolitely: true,
 	}
-	pp.Println(mapa1)
+	pp.Println(Funtik)
 
-	mapa1["D"] = 21
-	v, ok := mapa1["A"]
+	David := Dog{
+		name:       "David",
+		judgeGrade: 5,
+		isPolitely: true,
+	}
+	pp.Println(David)
+
+	Hrrr := Dog{
+		name:       "Hrrr",
+		judgeGrade: 2,
+		isPolitely: false,
+	}
+	pp.Println(Hrrr)
+
+	dogs := map[bool]int{
+		Funtik.isPolitely: Funtik.ifPolitely(),
+		David.isPolitely:  David.ifPolitely(),
+		Hrrr.isPolitely:   Hrrr.ifPolitely(),
+	}
+
+	pp.Println(dogs)
+	pp.Println(len(dogs))
+
+	i, ok := dogs[Funtik.isPolitely]
 	if ok {
-		pp.Println(v)
-	} else {
-		pp.Println("Not found")
+		pp.Println(i)
 	}
-
-	delete(mapa1, "B")
-	pp.Println(mapa1)
 
 }
 
