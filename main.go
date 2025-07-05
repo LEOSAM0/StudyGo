@@ -1,7 +1,6 @@
 package main
 
 import (
-	dogs "StudyGo/Dogs"
 	"fmt"
 
 	"github.com/k0kubun/pp"
@@ -17,39 +16,33 @@ import (
 */
 
 func main() {
-
-	Funtik := dogs.Dog{
-		Name:       "Funtik",
-		JudgeGrade: 6,
-		IsPolitely: true,
+	parking := map[string]float64{
+		"A4":  460.0,
+		"B8":  501.0,
+		"D32": 930.3,
+		"C2":  383.4,
+		"F44": 1409.1,
+		"E1":  499.9,
+		"G9":  909.7,
+		"Z":   1100.0,
 	}
-	pp.Println(Funtik)
+	pp.Println(parking)
 
-	David := dogs.Dog{
-		Name:       "David",
-		JudgeGrade: 5,
-		IsPolitely: false,
-	}
-	pp.Println(David)
-
-	Hrrr := dogs.Dog{
-		Name:       "Hrrr",
-		JudgeGrade: 2,
-		IsPolitely: true,
-	}
-	pp.Println(Hrrr)
-
-	dogs := []dogs.Dog{Funtik, David, Hrrr}
-
-	fmt.Println("До применения бонуса:")
-	pp.Println(dogs)
-
-	for i := range dogs {
-		dogs[i].IfPolitely()
+	for i := range parking {
+		if parking[i] > 500 {
+			fmt.Println(parking[i])
+		}
 	}
 
-	fmt.Println("После применения бонуса:")
-	pp.Println(dogs)
+	fmt.Println("")
+
+	for i := range parking {
+		if parking[i] > 900 {
+			sale := parking[i] - (parking[i] / 10)
+			pp.Println(sale)
+		}
+	}
+
 }
 
 func changePtr(in *int, str *string, bl *bool, fl *float64) {
